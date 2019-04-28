@@ -12,12 +12,7 @@
     <script type="module">
         import init, { greet } from './pkg/client.js';
 
-        void async function() {
-
-            await init('./pkg/client_bg.wasm');
-
-            greet('Bob');
-        }();
+        init('./pkg/client_bg.wasm');
     </script>
 </body>
 

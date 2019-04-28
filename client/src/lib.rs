@@ -5,7 +5,7 @@ extern "C" {
     fn alert(s: &str);
 }
 
-#[wasm_bindgen]
-pub fn greet(name: &str) {
-    alert(&format!("Hello, {}!", name));
+#[wasm_bindgen(start)]
+pub fn greet() {
+    alert(&format!("Hello, {}!", "Bob"));
 }
