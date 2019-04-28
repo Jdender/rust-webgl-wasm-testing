@@ -5,7 +5,7 @@ Builds everything in the workspace.
 Run task `build:client` after this.
 
 ```bash
-cargo build
+cargo build --all --exclude client
 ```
 
 ## build:client
