@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Webgl Wasm Testing</title>
+</head>
+
+<body>
+    <script type="module">
+        import init, { greet } from './pkg/client.js';
+
+        void async function() {
+
+            await init('./pkg/client_bg.wasm');
+
+            greet('Bob');
+        }();
+    </script>
+</body>
+
+</html>
