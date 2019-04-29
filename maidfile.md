@@ -34,5 +34,5 @@ Rerun client:build on any file changes.
 
 ```bash
 cd client
-cargo watch -i .gitignore -i "pkg/*" -s "wasm-pack build"
+cargo watch -i .gitignore -i "pkg/*" -s "wasm-pack build  --target web"
 ```
