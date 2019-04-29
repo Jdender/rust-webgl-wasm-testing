@@ -7,7 +7,7 @@ You obviously need cargo/rustc, also optionaly maid as a task runner. If you don
 
 `yarn global add maid`
 
-If you don't want to bother just read the [maidfile](../blob/master/maidfile.md) for all the tasks then you can just run the commands manually.
+If you don't want to bother just read the [maidfile](maidfile.md) for all the tasks then you can just run the commands manually.
 
 You will need the following cargo features installed:
 
