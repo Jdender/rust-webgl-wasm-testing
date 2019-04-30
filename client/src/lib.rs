@@ -32,13 +32,10 @@ pub fn main() -> Result<(), JsValue> {
     context.use_program(Some(&program_info.program));
 
     // The points of the triangle
-    let vertices: [f32; 12] = [
-        -1.0, -1.0,
-         1.0, -1.0,
-        -1.0,  1.0,
-        -1.0,  1.0,
-         1.0, -1.0,
-         1.0,  1.0,
+    let vertices: Vec<f32> = vec![
+        0.0, 0.0,
+        0.0, 0.5,
+        0.7, 0.0,
     ];
 
     // Creat a wasm buffer
