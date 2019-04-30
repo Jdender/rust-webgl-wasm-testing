@@ -1,6 +1,6 @@
 use web_sys::{WebGlProgram, WebGl2RenderingContext, WebGlShader};
 
-// Used to keep webgl shaders/programs tidy
+// Program/shaders deserve their own struct
 pub struct ProgramInfo {
     pub frag_shader: WebGlShader,
     pub vert_shader: WebGlShader,
