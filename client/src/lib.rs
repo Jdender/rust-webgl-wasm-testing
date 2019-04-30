@@ -33,9 +33,9 @@ pub fn main() -> Result<(), JsValue> {
 
     // The points of the triangle
     let vertices: Vec<f32> = vec![
-        0.0, 0.0,
-        0.0, 0.5,
-        0.7, 0.0,
+        0.0, 0.0, 0.0,
+        0.0, 0.5, 0.0,
+        0.7, 0.0, 0.0,
     ];
 
     // Creat a wasm buffer
@@ -61,8 +61,7 @@ pub fn main() -> Result<(), JsValue> {
     );
 
     // Set a_position to the values of the webgl buffer
-    // TODO: Change 2 to 3 after move to 3d
-    context.vertex_attrib_pointer_with_i32(a_position_location, 2, WebGl2RenderingContext::FLOAT, false, 0, 0);
+    context.vertex_attrib_pointer_with_i32(a_position_location, 3, WebGl2RenderingContext::FLOAT, false, 0, 0);
     context.enable_vertex_attrib_array(a_position_location);
 
     context.clear_color(0.0, 0.0, 0.0, 1.0);
@@ -71,8 +70,7 @@ pub fn main() -> Result<(), JsValue> {
     context.draw_arrays(
         WebGl2RenderingContext::TRIANGLES,
         0,
-        // TODO: Change 2 to 3 after move to 3d
-        (vertices.len() / 2) as i32,
+        (vertices.len() / 3) as i32,
     );
 
     Ok(())
