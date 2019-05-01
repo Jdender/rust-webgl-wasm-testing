@@ -1,9 +1,8 @@
 extern crate console_error_panic_hook;
 
 mod webgl;
-use webgl::WebGl;
+use webgl::{WebGl, vec_to_float_array};
 
-use js_sys::WebAssembly;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 use web_sys::WebGl2RenderingContext;
@@ -23,8 +22,8 @@ pub fn main() -> Result<(), JsValue> {
     let gl = WebGl::new(canvas)?;
 
     // Unpack these to make it easier to copy/paste
-    let context = gl.context;
-    let program_info = gl.program_info;
+    let context = &gl.context;
+    let program_info = &gl.program_info;
 
     // The points of the triangle
     let vertices: Vec<f32> = vec![
@@ -33,15 +32,7 @@ pub fn main() -> Result<(), JsValue> {
         0.7, 0.0, 0.0,
     ];
 
-    // Creat a wasm buffer
-    let memory_buffer = wasm_bindgen::memory()
-        .dyn_into::<WebAssembly::Memory>()?
-        .buffer();
-
-    // Turn the wasm buffer into a Float32Array and put the vertices into it
-    let vertices_location = vertices.as_ptr() as u32 / 4;
-    let vert_array = js_sys::Float32Array::new(&memory_buffer)
-        .subarray(vertices_location, vertices_location + vertices.len() as u32);
+    let vert_array = vec_to_float_array(&vertices)?;
 
     // Get location of a_position
     let a_position_location = context.get_attrib_location(&program_info.program, "a_position") as u32;
@@ -59,6 +50,8 @@ pub fn main() -> Result<(), JsValue> {
     context.vertex_attrib_pointer_with_i32(a_position_location, 3, WebGl2RenderingContext::FLOAT, false, 0, 0);
     context.enable_vertex_attrib_array(a_position_location);
 
+    // Set the final things up
+    gl.resize_canvas();
     context.clear_color(0.0, 0.0, 0.0, 1.0);
     context.clear(WebGl2RenderingContext::COLOR_BUFFER_BIT);
 
