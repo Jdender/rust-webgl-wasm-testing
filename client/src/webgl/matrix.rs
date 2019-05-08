@@ -17,16 +17,16 @@ impl Matrix {
         multiply(self.0, translation(tx, ty, tz)).into()
     }
 
-    pub fn xRotate(&self, angleInRadians: f32) -> Matrix {
-        multiply(self.0, xRotation(angleInRadians)).into()
+    pub fn xRotate(&self, angle_in_radians: f32) -> Matrix {
+        multiply(self.0, xRotation(angle_in_radians)).into()
     }
  
-    pub fn yRotate(&self, angleInRadians: f32) -> Matrix {
-        multiply(self.0, yRotation(angleInRadians)).into()
+    pub fn yRotate(&self, angle_in_radians: f32) -> Matrix {
+        multiply(self.0, yRotation(angle_in_radians)).into()
     }
  
-    pub fn zRotate(&self, angleInRadians: f32) -> Matrix {
-        multiply(self.0, zRotation(angleInRadians)).into()
+    pub fn zRotate(&self, angle_in_radians: f32) -> Matrix {
+        multiply(self.0, zRotation(angle_in_radians)).into()
     }
  
     pub fn scale(&self, sx: f32, sy: f32, sz: f32) -> Matrix {
@@ -62,10 +62,10 @@ fn translation(tx: f32, ty: f32, tz: f32) -> RawMatrix {
     ]
 }
  
-fn xRotation(angleInRadians: f32) -> RawMatrix {
+fn xRotation(angle_in_radians: f32) -> RawMatrix {
 
-    let c = angleInRadians.cos();
-    let s = angleInRadians.sin();
+    let c = angle_in_radians.cos();
+    let s = angle_in_radians.sin();
  
     [
       1.0, 0.0, 0.0, 0.0,
@@ -75,10 +75,10 @@ fn xRotation(angleInRadians: f32) -> RawMatrix {
     ]
 }
  
-fn yRotation(angleInRadians: f32) -> RawMatrix {
+fn yRotation(angle_in_radians: f32) -> RawMatrix {
 
-    let c = angleInRadians.cos();
-    let s = angleInRadians.sin();
+    let c = angle_in_radians.cos();
+    let s = angle_in_radians.sin();
  
     [
       c,   0.0, -s,  0.0,
@@ -88,10 +88,10 @@ fn yRotation(angleInRadians: f32) -> RawMatrix {
     ]
 }
  
-fn zRotation(angleInRadians: f32) -> RawMatrix {
+fn zRotation(angle_in_radians: f32) -> RawMatrix {
 
-    let c = angleInRadians.cos();
-    let s = angleInRadians.sin();
+    let c = angle_in_radians.cos();
+    let s = angle_in_radians.sin();
  
     [
        c,   s,   0.0, 0.0,
