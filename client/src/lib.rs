@@ -50,6 +50,9 @@ pub fn main() -> Result<(), JsValue> {
     context.vertex_attrib_pointer_with_i32(a_position_location, 3, WebGl2RenderingContext::FLOAT, false, 0, 0);
     context.enable_vertex_attrib_array(a_position_location);
 
+    // Get location of u_matrix
+    let a_position_location = context.get_uniform_location(&program_info.program, "u_matrix").unwrap();
+
     // Set the final things up
     gl.resize_canvas();
     context.clear_color(0.0, 0.0, 0.0, 1.0);

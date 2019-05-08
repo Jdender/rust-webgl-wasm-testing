@@ -2,6 +2,8 @@
 mod program_info;
 use program_info::ProgramInfo;
 
+mod matrix;
+
 use web_sys::{HtmlCanvasElement, WebGl2RenderingContext};
 use wasm_bindgen::JsCast;
 use wasm_bindgen::prelude::JsValue;
